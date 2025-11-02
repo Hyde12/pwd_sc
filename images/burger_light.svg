@@ -1,0 +1,18 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+	<defs>
+		<image  width="501" height="400" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfUAAAGQBAMAAABFX+TLAAAAAXNSR0IB2cksfwAAABJQTFRFAAAA0fjv0fjv0fjv0fjv0fjv7SnVIAAAAAZ0Uk5TAP/PXz/vhWeCFQAABNBJREFUeJzt3UFy0zAYhmGLlB0UOEGHE3Q4Qo/QG+cIPQJ7mHFvUJo4jp2kG0uMPv16v3cFi5I888spTawqDet+DJEaC78+rf/8vfAfq16ZfmWPNfSpt9eCL17sEell+LM9Jr0IP9uj0kvwJ3u8l7ml7Be8kz3u2AsGP9kjjz1/8JM98tjzB3+0xx579uCP9thjzx78wR597LmDP9ijj73AHn/smYu+D3ve4FMPS55tz1r0qYslj7ZnLfrUxZJn23MWPdrex+WOtudc8Gh7H5e77RuzvYMyXuht7yDbN2V7B9m+qW7s5O/vtm8KbSf/DGt7+Pxe5bZsj1+evY8LPu9zGbK9i0Wf+Tks2t7Dos+976IDe/a9Rh0s+nx7/MHn31sY3l5wT2n4RV9ijz74kvuogw++6P754IMv2zcRevCle4UCD754j1hgfP6e2PO+yKj4gu3A0ffDluyEDr4PumgTuPe/z8Ua/f/8vQe0bGdmOzPbmdnOzHZmtjOznZntzGxnZjsz25nZzsx2ZrYzs52Z7cxsZ2Y7M9uZ2c7Mdma2M7Odme3MbGdmOzPbmdnOzHZmtjOznZntzGxnZjsz25nZzsx2ZrYzs52Z7cxsZ2Y7M9uZ2c7Mdma2M7Odme3MbGd2Y4915MSWbg4gurB/+lbxqSi65K/t/Y58aa1f7PFOl8lqhT/bd/eSp1K/BT/b776Knkr9zvjZTrjW5+bziOKfnZfRCd/BmYnbO636yf7rt/CZCJoG38X5sJubBs+0T4Pv4kzk7R0H38VZ2BkdBt/H+e/be3g52oljPy56qv2w6BNzyQ/D455rf1/0Cbrkh91frv39gk/QJX/4Lse1v72i7dTLHW0fRrT9ea9+DqrGRH2ps53aI9j+Zjsy25nZzoz8PY78f5sxPb2on4Mq9s+wtgODv1dpO7AR/pkU1H78HBa66Mn2EX/PCdJ+utcIuehnO3Hw872FwMGf7ykFDn65l/jzF+0zqd7qHvKB9kH0au8A7Yq/2DMCu+Iv9wqhBv9went2tne/DXjpZm8gZ9Xf7gnF4D/aCzwwrvmP94APhNGP679c/86Hnvnj1d/9uz6Y2c7Mdma2M7Odme3MbGdmOzPbmdnOzHZmtjOznZntzGxnZjsz25nZzsx2ZrYzs52Z7cxsZ2Y7M9uZ2c7Mdma2M7Odme3MbGdmOzPbmdnOzHZmtjOznZntzGxnZjsz25nZzsx2ZrYzs52Z7cxsZ2Y7M9uZ2T63u6/2wNeHPwi6sNc9ZEWuX9mrHy+zPutF0WL/Wf+ZiPHa86S0+NkuOlNHij/ZZSdGKl/w1GcmKgc/2YWnSAkHP9mFp6cJB68/G1c3eP2ZyLrBN3AWtmzwDdhlg2/h/HfV4JN87Gy7atEn/ZJH21WLPumXPNsuWvSpgSVve/2asIsu+NTA5W57/dqway749PSieNirRPYWXupsr57t6myvne3qbK+d7epsrx3aTv45rgk7+ed322vXxHuVd38kD9uEnfwetczewAX/uJc8bBN22WeR+kVP/vxdaJcveuH9NvLBg+3S++vI91WS76fVDv5B9mGo/P559T3kysHrxu79MsLBN7BPirw/TrTq29gXKcG3sh8WvQ96GJ73VR9aTb/6vQc1Ry/f+j/8A9lcNYBxtfUnAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		.s0 { fill: none;stroke: #535c91;stroke-linecap: round;stroke-width: 66.7 } 
+	</style>
+	<g id="SVGRepo_bgCarrier">
+	</g>
+	<g id="SVGRepo_tracerCarrier">
+	</g>
+	<g id="SVGRepo_iconCarrier">
+		<path class="s0" d="m166.67 400h433.33"/>
+		<path class="s0" d="m166.67 566.67h200"/>
+		<path class="s0" d="m166.67 233.33h333.33"/>
+		<use id="Layer 1" href="#img1" x="133" y="200"/>
+	</g>
+</svg>
