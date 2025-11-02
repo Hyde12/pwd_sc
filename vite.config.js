@@ -3,6 +3,38 @@ import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'path'
 import fs from 'fs'
 
+function includeExtraHTML() {
+  const entries = {};
+
+  // Include main pages
+  const pagesDir = resolve(__dirname, "pages");
+  fs.readdirSync(pagesDir).forEach(file => {
+    if (file.endsWith(".html")) {
+      const name = file.replace(".html", "");
+      entries[name] = resolve(pagesDir, file);
+    }
+  });
+
+  // Include template.html at root
+  const templatePath = resolve(__dirname, "template.html");
+  if (fs.existsSync(templatePath)) {
+    entries["template"] = templatePath;
+  }
+
+  // Include page snippets in pages/content/ if needed
+  const contentDir = resolve(pagesDir, "content");
+  if (fs.existsSync(contentDir)) {
+    fs.readdirSync(contentDir).forEach(file => {
+      if (file.endsWith(".html")) {
+        const name = `content-${file.replace(".html", "")}`;
+        entries[name] = resolve(contentDir, file);
+      }
+    });
+  }
+
+  return entries;
+}
+
 export default defineConfig({
   root: '.',
   publicDir: 'public',
@@ -10,11 +42,7 @@ export default defineConfig({
 
   build: {
     rollupOptions: {
-      input: {
-        verification: resolve(__dirname, 'pages/verification.html'),
-        add_holders: resolve(__dirname, 'pages/add-holders.html'),
-        see_holders: resolve(__dirname, 'pages/see-holders.html'),
-      },
+      input: includeExtraHTML(),
     },
     outDir: 'dist',
   },
