@@ -72,10 +72,10 @@ const holderPrivilege = document.getElementById("holder-privilege");
 const API_BASE =
   window.location.hostname === "localhost"
     ? "http://localhost:3000"
-    : window.location.origin
+    : "https://pwd-sc.onrender.com"
 
 async function returnIdHolder(id) {
-  const res = await fetch(`http://localhost:5173/api/holders/${id}`);
+  const res = await fetch(`${API_BASE}/api/holders/${id}`);
   const data = await res.json();
   console.log(data);
 }
@@ -95,7 +95,6 @@ idVerification.addEventListener("keydown", async function(event) {
 
       if (data && Object.keys(data).length > 0) {
         // Found
-        console.log("✅ Holder found:", data);
         errorMessage.classList.add("opacity-0")
         holderMessage.classList.remove("opacity-0")
         
