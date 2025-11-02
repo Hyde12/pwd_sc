@@ -11,9 +11,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
         verification: resolve(__dirname, 'pages/verification.html'),
-        // Add other pages here
+        add_holders: resolve(__dirname, 'pages/add-holders.html'),
+        see_holders: resolve(__dirname, 'pages/see-holders.html'),
       },
     },
     outDir: 'dist',
