@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "concurrently \"node ./src/api.js\" \"vite\"",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node ./src/api.js"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
