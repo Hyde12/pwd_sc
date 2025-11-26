@@ -1,11 +1,19 @@
 <!--Extends template.html-->
-    <input type="text" id="verify-id" placeholder="Enter I.D. number" class="rounded p-4 w-50 sm:w-300 bg-light-2 text-light-1 dark:bg-dark-2 dark:text-dark-3">
-    <div class="mt-5 opacity-0 cursor-default" id="no-holder">
-        <h1>No such user.</h1>
-        <h2>Double check inputted id.</h2>
+    <input type="text" id="verify-id" placeholder="Enter I.D. number" class="rounded p-4 w-[95vw] sm:w-[95vw] bg-light-2 text-light-1 dark:bg-dark-2 dark:text-dark-3">
+    
+    <div class="flex items-center flex-col mt-10 opacity-0" id="loader">
+        <div class="w-5 h-5 rounded-full animate-spin
+                   border-4 border-double border-dark-2 border-t-transparent"></div>
+        <h2 class="mt-2 text-xs opacity-45">Loading... (may take a while if this is your first request)</h2>
     </div>
-    <div class="mt-5 bg-light-0 dark:bg-dark-0 rounded-xl h-70 w-full sm:w-450">
-        <div class="p-5 opacity-0 cursor-default" id="holder">
+
+    <div class="mt-5 opacity-0 cursor-default" id="no-holder">
+        <h1 class="select-none">No such user.</h1>
+        <h2 class="select-none">Double check inputted id.</h2>
+    </div>
+
+    <div class="mt-5 bg-light-0 dark:bg-dark-0 rounded-xl h-75 w-auto sm:w-auto">
+        <div class="flex flex-col items-center p-5 opacity-0 cursor-default" id="holder">
             <img src="" id="holder-picture" class="w-25 h-25 object-fit mb-3" />
             <h1 id="holder-name"></h1>
             <h2 id="holder-id"></h2>
@@ -13,3 +21,4 @@
             <h2 id="holder-privilege"></h2>
         </div>
     </div>
+    

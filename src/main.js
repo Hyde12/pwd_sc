@@ -68,17 +68,12 @@ const holderName = document.getElementById("holder-name");
 const holderId = document.getElementById("holder-id");
 const holderYear = document.getElementById("holder-year");
 const holderPrivilege = document.getElementById("holder-privilege");
+const loader = document.getElementById("loader")
 
 const API_BASE =
   window.location.hostname === "localhost"
     ? "http://localhost:3000"
     : "https://pwd-sc.onrender.com"
-
-async function returnIdHolder(id) {
-  const res = await fetch(`${API_BASE}/api/holders/${id}`);
-  const data = await res.json();
-  console.log(data);
-}
 
 idVerification.addEventListener("keydown", async function(event) {
   if (event.key == "Enter") {
@@ -87,11 +82,14 @@ idVerification.addEventListener("keydown", async function(event) {
     const id = idVerification.value.trim();
     
     if (!id) return;
-    returnIdHolder(id);
 
     try {
+      loader.classList.remove("opacity-0")
+
       const response = await fetch(`${API_BASE}/api/holders/${encodeURIComponent(id)}`);
       const data = await response.json();
+
+      loader.classList.add("opacity-0")
 
       if (data && Object.keys(data).length > 0) {
         // Found
