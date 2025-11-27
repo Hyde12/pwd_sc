@@ -1,9 +1,10 @@
 // Verification
 const idVerification = document.getElementById("verify-id");
 const errorMessage = document.getElementById("no-holder");
-const holderMessage = document.getElementById("holder");
+const holder = document.getElementById("holder")
 
 // Verification - elements
+const holderData = document.getElementById("holder-data");
 const holderPicture = document.getElementById("holder-picture");
 const holderName = document.getElementById("holder-name");
 const holderId = document.getElementById("holder-id");
@@ -25,27 +26,29 @@ idVerification.addEventListener("keydown", async function(event) {
     if (!id) return;
 
     try {
-      loader.classList.remove("opacity-0")
+      loader.classList.remove("hidden")
 
       const response = await fetch(`${API_BASE}/api/holders/${encodeURIComponent(id)}`);
       const data = await response.json();
 
-      loader.classList.add("opacity-0")
+      loader.classList.add("hidden")
 
       if (data && Object.keys(data).length > 0) {
         // Found
-        errorMessage.classList.add("opacity-0")
-        holderMessage.classList.remove("opacity-0")
+        errorMessage.classList.add("hidden")
+        holderData.classList.remove("hidden")
+        holder.classList.remove("hidden")
         
         holderPicture.src = data.picture + ".png";
         holderName.innerHTML = data.firstName + " " + data.lastName;
         holderId.innerHTML = "ID: " + data.id;
-        holderYear.innerHTML = "Birth Year: " + data.birthYear;
-        holderPrivilege.innerHTML = "Privilege: " + data.privilege;
+        holderYear.innerHTML = data.birthYear;
+        holderPrivilege.innerHTML = data.privilege;
       } else {
         // Not Found
-        errorMessage.classList.remove("opacity-0")
-        holderMessage.classList.add("opacity-0")
+        errorMessage.classList.remove("hidden")
+        holderData.classList.add("hidden")
+        holder.classList.add("hidden")
       }
     } catch (err) {
       console.error("Fetch error:", err);

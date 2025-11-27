@@ -1,25 +1,50 @@
-<!--Extends template.html-->
-    <input type="text" id="verify-id" placeholder="Enter I.D. number" class="rounded p-4 w-[95vw] sm:w-[95vw] bg-light-2 text-light-1 dark:bg-dark-2 dark:text-dark-3">
-    
-    <div class="flex items-center flex-col mt-10 opacity-0" id="loader">
-        <div class="w-5 h-5 rounded-full animate-spin
-                   border-4 border-double border-dark-2 border-t-transparent"></div>
-        <h2 class="mt-2 text-xs opacity-45">Loading... (may take a while if this is your first request)</h2>
+<div class="flex flex-col items-center justify-center p-4">
+
+    <input type="text" id="verify-id" placeholder="Enter I.D. number"
+        class="rounded-xl p-4 w-full sm:w-[500px] bg-light-2 dark:bg-dark-2 **text-color-dark-1** **border-2 border-color-dark-3** shadow-md 
+               focus:border-color-light-0 focus:ring-1 focus:ring-color-light-0 transition duration-200 text-lg font-mono tracking-wider">
+
+    <div class="flex items-center flex-col mt-10 hidden" id="loader">
+        <div class="w-8 h-8 rounded-full animate-spin
+                    border-4 border-double **border-color-light-0** border-t-transparent"></div>
+        <h2 class="mt-4 text-sm **text-color-dark-2** opacity-80">Loading... (may take a while if this is your first
+            request)</h2>
     </div>
 
-    <div class="mt-5 opacity-0 cursor-default" id="no-holder">
-        <h1 class="select-none">No such user.</h1>
-        <h2 class="select-none">Double check inputted id.</h2>
+    <div class="mt-8 p-6 **text-color-dark-1** hidden cursor-default text-center w-full sm:w-[500px]"
+        id="no-holder">
+        <h1 class="select-none text-2xl font-bold mb-2">🚫 No such user found.</h1>
+        <h2 class="select-none text-md **text-color-dark-2**">Please double check the inputted I.D. number.</h2>
     </div>
 
-    <div class="mt-5 bg-light-0 dark:bg-dark-0 rounded-xl h-75 w-auto sm:w-auto">
-        <div class="flex flex-col items-center p-5 opacity-0 cursor-default" id="holder">
-            <img src="" id="holder-picture" class="w-25 h-25 object-fit mb-3" />
-            <h1 id="holder-name"></h1>
-            <h2 id="holder-id"></h2>
-            <h2 id="holder-year"></h2>
-            <h2 id="holder-privilege"></h2>
+    <div class="mt-8 bg-light-0 dark:bg-dark-0 **border border-color-dark-3** rounded-xl shadow-2xl w-full sm:w-[500px] p-6 h-90 hidden" id="holder">
+        <div class="flex flex-col items-center p-2 hidden cursor-default" id="holder-data">
+
+            <img src="" id="holder-picture"
+                class="w-32 h-32 object-cover rounded-full mb-5 shadow-lg border-4 **border-color-light-0**" />
+
+            <div class="text-center w-full">
+
+                <h1 id="holder-name" class="text-3xl font-extrabold **text-color-dark-0** mb-1"></h1>
+                <h2 id="holder-id"
+                    class="text-sm font-mono **text-color-dark-2** mb-4 border-b pb-4 border-color-dark-3 w-full"></h2>
+
+                <div class="flex justify-between items-center px-4">
+                    <div class="text-left">
+                        <p class="text-xs uppercase font-medium **text-color-dark-2**">Birth Year</p>
+                        <h2 id="holder-year" class="text-lg font-bold text-color-dark-2 text-wrap"></h2>
+                    </div>
+
+                    <div class="text-right flex flex-col items-end">
+                        <p class="text-xs uppercase font-medium text-color-dark-2">Privilege Status</p>
+                        <h2 id="holder-privilege"
+                            class="text-lg font-bold text-color-dark-2 text-wrap">
+                        </h2>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-    <script type="module" src="../src/verification.js"></script>
-    
+</div>
+<script type="module" src="../src/verification.js"></script>

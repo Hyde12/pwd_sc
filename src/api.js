@@ -56,6 +56,21 @@ app.get('/api/holders/:id', (req, res) => {
   });
 });
 
+app.get('/api/holders', (req, res) => {
+    db.all('SELECT * FROM holders', [], (err, rows) => {
+        if (err) {
+            console.error("Error fetching all holders:", err.message);
+            
+            // 3. Handle server-side errors
+            return res.status(500).json({ 
+                message: "Internal Server Error: Could not retrieve holders list.",
+                error: err.message
+            });
+        }
+        res.status(200).json(rows);
+    });
+});
+
 app.post('/api/holders/', async (req, res) => {
     var { first_name, last_name, birth_year, category, picture } = req.body;
     
