@@ -50,14 +50,14 @@ app.use(express.json());
 
 app.get('/api/holders/:id', (req, res) => {
   const id = req.params.id;
-  db.get('SELECT * FROM holders WHERE id = ?', [id], (err, row) => {
+  db.get('SELECT * FROM holdersNew WHERE id = ?', [id], (err, row) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(row || {});
   });
 });
 
 app.get('/api/holders', (req, res) => {
-    db.all('SELECT * FROM holders', [], (err, rows) => {
+    db.all('SELECT * FROM holdersNew', [], (err, rows) => {
         if (err) {
             console.error("Error fetching all holders:", err.message);
             
@@ -72,8 +72,7 @@ app.get('/api/holders', (req, res) => {
 });
 
 app.post('/api/holders/', async (req, res) => {
-    var { first_name, last_name, birth_year, category, picture } = req.body;
-    
+    var { first_name, last_name, birth_date, picture, disability, senior_citizen } = req.body;
     first_name = capitalizeFirstLetter(first_name)
     last_name = capitalizeFirstLetter(last_name)
 
@@ -87,7 +86,7 @@ app.post('/api/holders/', async (req, res) => {
         
         try {
             // Check if the potential ID already exists in the database
-            const existingRow = await getDB('SELECT id FROM holders WHERE id = ?', [potentialId]);
+            const existingRow = await getDB('SELECT id FROM holdersNew WHERE id = ?', [potentialId]);
             
             if (!existingRow) {
                 uniqueId = potentialId; // ID is unique, break the loop
@@ -104,12 +103,12 @@ app.post('/api/holders/', async (req, res) => {
         return res.status(500).json({ error: 'Failed to generate a unique ID after several attempts. Try again.' });
     }
 
-    const sql = 'INSERT INTO holders(id, firstName, lastName, birthYear, privilege, picture) VALUES (?, ?, ?, ?, ?, ?)';
+    const sql = 'INSERT INTO holdersNew(id, firstName, lastName, birthDate, picture, disability, seniorCitizen) VALUES (?, ?, ?, ?, ?, ?, ?)';
     
     // NOTE: The 'category' field from the request body is being used for the 'privilege' column in the SQL statement. 
     // Please ensure this mapping is correct based on your table structure.
     try {
-        const result = await runDB(sql, [uniqueId, first_name, last_name, birth_year, category, "x"]);
+        const result = await runDB(sql, [uniqueId, first_name, last_name, birth_date, picture, disability, senior_citizen]);
 
         // Return the generated unique ID instead of this.lastID, as SQLite often uses rowid for lastID, 
         // but we want the application-generated ID.

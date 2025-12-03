@@ -28,9 +28,20 @@ async function loadAllHolders() {
     if (holders && Array.isArray(holders) && holders.length > 0) {
       holders.forEach(holder => {
         const row = document.createElement("tr");
+        console.log(holder)
+        let status = ""
+        if (holder.seniorCitizen && holder.disability) {
+            status = "Senior Citizen - " + holder.disability;
+        }
+        else if (holder.seniorCitizen) {
+            status = "Senior Citizen";
+        } 
+        else if (holder.disability) {
+            status = holder.disability;
+        }
         
         // Use Tailwind classes for table styling
-        row.className = "bg-color-offwhite border-b border-dark-2 bg-light-4 dark:bg-dark-4 hover:bg-light-1 dark:hover:bg-dark-1 text-center transition duration-150";
+        row.className = "bg-color-offwhite text-yellow-text border-b border-dark-2 bg-light-4 dark:bg-dark-4 hover:bg-light-1 dark:hover:bg-dark-1 text-center transition duration-150";
 
         row.innerHTML = `
             <td class="px-6 py-4 whitespace-nowrap">
@@ -43,11 +54,11 @@ async function loadAllHolders() {
                 ${holder.id}
             </td>
             <td class="px-6 py-4 text-center **text-color-dark-2**">
-                ${holder.birthYear}
+                ${holder.birthDate}
             </td>
             <td class="px-6 py-4 text-center">
                 <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:text-green-300 dark:bg-green-700">
-                    ${holder.privilege}
+                    ${status}
                 </span>
             </td>
         `;

@@ -38,12 +38,24 @@ idVerification.addEventListener("keydown", async function(event) {
         errorMessage.classList.add("hidden")
         holderData.classList.remove("hidden")
         holder.classList.remove("hidden")
-        
+
+        let status = ""
+        console.log(data.seniorCitizen)
+        if (data.seniorCitizen && data.disability) {
+            status = "Senior Citizen - " + data.disability;
+        }
+        else if (data.seniorCitizen) {
+            status = "Senior Citizen";
+        } 
+        else if (data.disability) {
+            status = data.disability;
+        }
+        console.log(data.seniorCitizen)
         holderPicture.src = data.picture + ".png";
         holderName.innerHTML = data.firstName + " " + data.lastName;
         holderId.innerHTML = "ID: " + data.id;
-        holderYear.innerHTML = data.birthYear;
-        holderPrivilege.innerHTML = data.privilege;
+        holderYear.innerHTML = data.birthDate;
+        holderPrivilege.innerHTML = status;
       } else {
         // Not Found
         errorMessage.classList.remove("hidden")
