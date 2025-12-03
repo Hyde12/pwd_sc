@@ -55,3 +55,15 @@ idVerification.addEventListener("keydown", async function(event) {
     }
   }
 });
+
+const picture = document.getElementById('holder-picture');
+
+picture.addEventListener('click', evt => {
+    if (picture.classList.contains('zoomed'))
+      picture.style.transform = ''
+    else {
+      const myScale = 700 / picture.clientWidth
+      picture.style.transform = `scale(${myScale})`
+    }
+    picture.classList.toggle('zoomed')
+  });

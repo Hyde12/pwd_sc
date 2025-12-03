@@ -12,6 +12,7 @@
   --color-light-3: #D1F8EF;
   
   --color-offwhite: #ffffe4;
+  --color-yellow-text: #ffd700;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

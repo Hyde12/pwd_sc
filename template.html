@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body class="bg-light-1 dark:bg-dark-1 transition-colors duration-300 min-h-screen relative overflow-x-hidden dark:text-dark-3 text-light-3">
+<body class="bg-light-1 dark:bg-dark-1 transition-colors duration-300 min-h-screen relative overflow-x-hidden dark:text-yellow text-yellow">
 
   <!-- Sidebar -->
   <div id="sidebar"
@@ -20,10 +20,10 @@
         ✕
       </button>
     </div>
-    <ul class="space-y-2 p-4">
-      <li><a href="/verification" class="dark:text-dark-3 text-light-3 block rounded p-3 dark:hover:bg-dark-1 hover:bg-light-1">Verification</a></li>
-      <li><a href="/add-holders" class="dark:text-dark-3 text-light-3 block rounded p-3 dark:hover:bg-dark-1 hover:bg-light-1">Add Holders <span class="dark:text-dark-2 text-light-2 text-xs">(admin)</span></a></li>
-      <li><a href="/see-holders" class="dark:text-dark-3 text-light-3 block rounded p-3 dark:hover:bg-dark-1 hover:bg-light-1">Current Holders <span class="dark:text-dark-2 text-light-2 text-xs">(admin)</span></a></li>
+    <ul class="space-y-2 p-4 dark:text-yellow text-yellow">
+      <li><a href="/verification" class="text-yellow-text block rounded p-3 dark:hover:bg-dark-1 hover:bg-light-1">Verification</a></li>
+      <li><a href="/add-holders" class="text-yellow-text block rounded p-3 dark:hover:bg-dark-1 hover:bg-light-1">Add Holders <span class="dark:text-dark-2 text-light-2 text-xs">(admin)</span></a></li>
+      <li><a href="/see-holders" class="text-yellow-text block rounded p-3 dark:hover:bg-dark-1 hover:bg-light-1">Current Holders <span class="dark:text-dark-2 text-light-2 text-xs">(admin)</span></a></li>
     </ul>
   </div>
 
@@ -51,7 +51,7 @@
       <button id="theme-toggle"
         class="theme-toggle flex items-center justify-center h-12 px-4 py-2 rounded absolute right-4 text-offwhite cursor-pointer">
         <img src="../images/light_off.svg" class="object-contain w-5 h-5 shrink-0 mt-0.5 opacity-0 dark:opacity-100">
-        <img src="../images/light_on.svg" class="object-contain w-5 h-5 shrink-0 mt-0.5 opacity-100 dark:opacity-0">
+        <img src="../images/light_on.svg" class="object-contain w-5 h-5 shrink-0 mt-0.5 opacity-100 dark:hidden">
       </button>
 
     </header>
