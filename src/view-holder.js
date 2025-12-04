@@ -30,7 +30,6 @@ async function verifyHolder(id) {
         }
 
         removeHolder(id);
-        location.reload();
         const result = await response.json();
         console.log("Success:", result);
     } catch (error) {
@@ -48,8 +47,8 @@ async function removeHolder(id) {
         });
 
         const result = await response.json();
-        location.reload();
         console.log("Success:", result);
+        location.reload();
 
     } catch (error) {
         console.error("Error making request:", error.message);
