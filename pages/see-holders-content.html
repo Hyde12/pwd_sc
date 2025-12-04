@@ -19,10 +19,41 @@
                     <th scope="col" class="px-6 py-3">Name</th>
                     <th scope="col" class="px-6 py-3 text-center">ID</th>
                     <th scope="col" class="px-6 py-3 text-center">Birth Year</th>
-                    <th scope="col" class="px-6 py-3 text-center">Privilege</th>
+                    <th scope="col" class="px-6 py-3 text-center">Status</th>
                 </tr>
             </thead>
             <tbody id="holders-table-body">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto bg-light-0 dark:bg-dark-0 shadow-lg rounded-2xl p-6 mt-20">
+    <h1 class="text-3xl font-bold mb-8 **text-color-dark-0**">Unverified Holders List</h1>
+
+    <div class="flex items-center flex-col mt-10" id="loader-2">
+        <div class="w-5 h-5 rounded-full animate-spin
+                            border-4 border-double border-dark-2 border-t-transparent"></div>
+        <h2 class="mb-8 text-xs opacity-45">Loading... (may take a while if this is your first request)</h2>
+    </div>
+
+    <div id="error-message-2" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 hidden"
+        role="alert">
+    </div>
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left">
+            <thead class="text-xs text-offwhite uppercase bg-light-1 dark:bg-dark-1 text-center">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-center">Picture</th>
+                    <th scope="col" class="px-6 py-3">Name</th>
+                    <th scope="col" class="px-6 py-3 text-center">ID</th>
+                    <th scope="col" class="px-6 py-3 text-center">Birth Year</th>
+                    <th scope="col" class="px-6 py-3 text-center">Status</th>
+                    <th scope="col" class="px-6 py-3 text-center">Options</th>
+                </tr>
+            </thead>
+            <tbody id="unverified-holders-table-body">
             </tbody>
         </table>
     </div>

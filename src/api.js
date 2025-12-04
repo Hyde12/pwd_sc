@@ -48,7 +48,7 @@ const db = new sqlite3.Database("src/holders.db", sqlite3.OPEN_READWRITE);
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/holders/:id', (req, res) => {
+app.get('/api/verifiedholders/:id', (req, res) => {
   const id = req.params.id;
   db.get('SELECT * FROM holdersNew WHERE id = ?', [id], (err, row) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -56,7 +56,7 @@ app.get('/api/holders/:id', (req, res) => {
   });
 });
 
-app.get('/api/holders', (req, res) => {
+app.get('/api/verifiedholders', (req, res) => {
     db.all('SELECT * FROM holdersNew', [], (err, rows) => {
         if (err) {
             console.error("Error fetching all holders:", err.message);
@@ -71,10 +71,67 @@ app.get('/api/holders', (req, res) => {
     });
 });
 
-app.post('/api/holders/', async (req, res) => {
+app.get('/api/unverifiedholders/:id/', (req, res) => {
+    const id = req.params.id;
+
+    db.get('SELECT * FROM unverifiedHolders WHERE id = ?', [id], (err, row) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(row || {});
+    });
+});
+
+app.get('/api/unverifiedholders', (req, res) => {
+    db.all('SELECT * FROM unverifiedHolders', [], (err, rows) => {
+        if (err) {
+            console.error("Error fetching all holders:", err.message);
+            
+            return res.status(500).json({ 
+                message: "Internal Server Error: Could not retrieve holders list.",
+                error: err.message
+            });
+        }
+        res.status(200).json(rows);
+    });
+});
+
+
+app.post('/api/verification/:id', async (req, res) => {
+    const id = req.params.id;
+
+    const sql = 'DELETE FROM unverifiedHolders WHERE id = ?';
+
+    try {
+        const result = await runDB(sql, [id]);
+        res.status(201).json({ 
+            message: 'Holder removed successfully'
+        });
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
+});
+
+
+app.post('/api/unverifiedholders/', async (req, res) => {
     var { first_name, last_name, birth_date, picture, disability, senior_citizen } = req.body;
-    first_name = capitalizeFirstLetter(first_name)
-    last_name = capitalizeFirstLetter(last_name)
+    first_name = capitalizeFirstLetter(first_name);
+    last_name = capitalizeFirstLetter(last_name);
+    const registration_date = String(new Date()); 
+
+    const sql = 'INSERT INTO unverifiedHolders(firstName, lastName, birthDate, registrationDate, picture, disability, seniorCitizen) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    
+    try {
+        const result = await runDB(sql, [first_name, last_name, birth_date, registration_date, picture, disability, senior_citizen]);
+        res.status(201).json({ 
+            message: 'Holder registered successfully'
+        });
+    } catch (err) {
+        // Handle insertion errors (e.g., schema validation)
+        return res.status(500).json({ error: err.message });
+    }
+});
+
+app.post('/api/holders/', async (req, res) => {
+    var { firstName, lastName, birthDate, picture, disability, seniorCitizen } = req.body;
 
     let uniqueId = null;
     let max_attempts = 10;
@@ -105,13 +162,8 @@ app.post('/api/holders/', async (req, res) => {
 
     const sql = 'INSERT INTO holdersNew(id, firstName, lastName, birthDate, picture, disability, seniorCitizen) VALUES (?, ?, ?, ?, ?, ?, ?)';
     
-    // NOTE: The 'category' field from the request body is being used for the 'privilege' column in the SQL statement. 
-    // Please ensure this mapping is correct based on your table structure.
     try {
-        const result = await runDB(sql, [uniqueId, first_name, last_name, birth_date, picture, disability, senior_citizen]);
-
-        // Return the generated unique ID instead of this.lastID, as SQLite often uses rowid for lastID, 
-        // but we want the application-generated ID.
+        const result = await runDB(sql, [uniqueId, firstName, lastName, birthDate, picture, disability, seniorCitizen]);
         res.status(201).json({ 
             message: 'Holder created successfully', 
             id: uniqueId 

@@ -28,7 +28,7 @@ idVerification.addEventListener("keydown", async function(event) {
     try {
       loader.classList.remove("hidden")
 
-      const response = await fetch(`${API_BASE}/api/holders/${encodeURIComponent(id)}`);
+      const response = await fetch(`${API_BASE}/api/verifiedholders/${encodeURIComponent(id)}`);
       const data = await response.json();
 
       loader.classList.add("hidden")

@@ -44,7 +44,7 @@ document.getElementById("form").addEventListener("submit", async function (event
     };
     console.log(JSON.stringify(submissionData))
     try {
-        const response = await fetch(`${API_BASE}/api/holders/`, {
+        const response = await fetch(`${API_BASE}/api/unverifiedholders/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,12 +59,10 @@ document.getElementById("form").addEventListener("submit", async function (event
 
         const result = await response.json();
         console.log("Success:", result);
-
+        location.reload();
     } catch (error) {
         console.error("Error making POST request:", error.message);
     }
-
-    console.log(data.first_name)
 });
 
 document.addEventListener('DOMContentLoaded', () => {
