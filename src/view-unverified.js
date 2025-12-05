@@ -2,6 +2,11 @@ const unverifiedHoldersTableBody = document.getElementById("unverified-holders-t
 const loader2 = document.getElementById("loader-2");
 const errorMessage2 = document.getElementById("error-message-2");
 
+const API_BASE =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://pwd-sc.onrender.com";
+
 async function verifyHolder(id) {
   try {
         const new_holder = await fetch(`${API_BASE}/api/unverifiedholders/${encodeURIComponent(id)}`);
